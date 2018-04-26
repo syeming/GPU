@@ -1,0 +1,14 @@
+./configure --prefix=/home/sunyeming/build-ffmpeg/ --bindir=/home/sunyeming/bin\
+--enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp\
+--extra-cflags=-I/usr/local/cuda-9.1/include --extra-ldflags=-L/usr/local/cuda-9.1/lib64
+
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}
+
+//nvidia transcode
+ffmpeg -y -hwaccel cuvid -c:v h264_cuvid -vsync 0 -i <input.mp4> -vf scale_npp=1920:1072\
+-vcodec h264_nvenc <output0.264> -vf scale_npp=1280:720 -vcodec h264_nvenc <output1.264>
+
+https://developer.nvidia.com/ffmpeg
