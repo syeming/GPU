@@ -1,0 +1,293 @@
+[sunyeming@server08 video]$ lspci | grep VGA
+0a:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 21)
+[sunyeming@server08 video]$ lspci | grep -i nvidia
+84:00.0 3D controller: NVIDIA Corporation GP104GL [Tesla P4] (rev a1)
+[sunyeming@server08 video]$ lspci -v -s 84:00.0
+84:00.0 3D controller: NVIDIA Corporation GP104GL [Tesla P4] (rev a1)
+	Subsystem: NVIDIA Corporation Device 11d8
+	Flags: bus master, fast devsel, latency 0, IRQ 68, NUMA node 1
+	Memory at fa000000 (32-bit, non-prefetchable) [size=16M]
+	Memory at e0000000 (64-bit, prefetchable) [size=256M]
+	Memory at f0000000 (64-bit, prefetchable) [size=32M]
+	Capabilities: <access denied>
+	Kernel driver in use: nvidia
+	Kernel modules: nouveau, nvidia_drm, nvidia
+
+[sunyeming@server08 video]$ nvidia-smi 
+Thu Apr 26 15:08:39 2018       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 387.26                 Driver Version: 387.26                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla P4            Off  | 00000000:84:00.0 Off |                    0 |
+| N/A   61C    P0    25W /  75W |    119MiB /  7606MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0      8201      C   ./main                                       109MiB |
++-----------------------------------------------------------------------------+
+[sunyeming@server08 video]$ nvidia-smi -a
+
+==============NVSMI LOG==============
+
+Timestamp                           : Thu Apr 26 15:08:50 2018
+Driver Version                      : 387.26
+
+Attached GPUs                       : 1
+GPU 00000000:84:00.0
+    Product Name                    : Tesla P4
+    Product Brand                   : Tesla
+    Display Mode                    : Enabled
+    Display Active                  : Disabled
+    Persistence Mode                : Disabled
+    Accounting Mode                 : Disabled
+    Accounting Mode Buffer Size     : 1920
+    Driver Model
+        Current                     : N/A
+        Pending                     : N/A
+    Serial Number                   : 0322417000841
+    GPU UUID                        : GPU-4ba8f633-1899-6817-4a58-bbae6370bb9e
+    Minor Number                    : 0
+    VBIOS Version                   : 86.04.55.00.01
+    MultiGPU Board                  : No
+    Board ID                        : 0x8400
+    GPU Part Number                 : 900-2G414-0000-000
+    Inforom Version
+        Image Version               : G414.0200.00.03
+        OEM Object                  : 1.1
+        ECC Object                  : 4.1
+        Power Management Object     : N/A
+    GPU Operation Mode
+        Current                     : N/A
+        Pending                     : N/A
+    GPU Virtualization Mode
+        Virtualization mode         : None
+    PCI
+        Bus                         : 0x84
+        Device                      : 0x00
+        Domain                      : 0x0000
+        Device Id                   : 0x1BB310DE
+        Bus Id                      : 00000000:84:00.0
+        Sub System Id               : 0x11D810DE
+        GPU Link Info
+            PCIe Generation
+                Max                 : 3
+                Current             : 3
+            Link Width
+                Max                 : 16x
+                Current             : 16x
+        Bridge Chip
+            Type                    : N/A
+            Firmware                : N/A
+        Replays since reset         : 0
+        Tx Throughput               : 0 KB/s
+        Rx Throughput               : 0 KB/s
+    Fan Speed                       : N/A
+    Performance State               : P0
+    Clocks Throttle Reasons
+        Idle                        : Not Active
+        Applications Clocks Setting : Not Active
+        SW Power Cap                : Not Active
+        HW Slowdown                 : Active
+            HW Thermal Slowdown     : Not Active
+            HW Power Brake Slowdown : Active
+        Sync Boost                  : Not Active
+        SW Thermal Slowdown         : Not Active
+    FB Memory Usage
+        Total                       : 7606 MiB
+        Used                        : 119 MiB
+        Free                        : 7487 MiB
+    BAR1 Memory Usage
+        Total                       : 256 MiB
+        Used                        : 2 MiB
+        Free                        : 254 MiB
+    Compute Mode                    : Default
+    Utilization
+        Gpu                         : 0 %
+        Memory                      : 0 %
+        Encoder                     : 0 %
+        Decoder                     : 0 %
+    Encoder Stats
+        Active Sessions             : 0
+        Average FPS                 : 0
+        Average Latency             : 0
+    Ecc Mode
+        Current                     : Enabled
+        Pending                     : Enabled
+    ECC Errors
+        Volatile
+            Single Bit            
+                Device Memory       : 0
+                Register File       : N/A
+                L1 Cache            : N/A
+                L2 Cache            : N/A
+                Texture Memory      : N/A
+                Texture Shared      : N/A
+                CBU                 : N/A
+                Total               : 0
+            Double Bit            
+                Device Memory       : 0
+                Register File       : N/A
+                L1 Cache            : N/A
+                L2 Cache            : N/A
+                Texture Memory      : N/A
+                Texture Shared      : N/A
+                CBU                 : N/A
+                Total               : 0
+        Aggregate
+            Single Bit            
+                Device Memory       : 0
+                Register File       : N/A
+                L1 Cache            : N/A
+                L2 Cache            : N/A
+                Texture Memory      : N/A
+                Texture Shared      : N/A
+                CBU                 : N/A
+                Total               : 0
+            Double Bit            
+                Device Memory       : 0
+                Register File       : N/A
+                L1 Cache            : N/A
+                L2 Cache            : N/A
+                Texture Memory      : N/A
+                Texture Shared      : N/A
+                CBU                 : N/A
+                Total               : 0
+    Retired Pages
+        Single Bit ECC              : 0
+        Double Bit ECC              : 0
+        Pending                     : No
+    Temperature
+        GPU Current Temp            : 61 C
+        GPU Shutdown Temp           : 94 C
+        GPU Slowdown Temp           : 91 C
+        GPU Max Operating Temp      : N/A
+        Memory Current Temp         : N/A
+        Memory Max Operating Temp   : N/A
+    Power Readings
+        Power Management            : Supported
+        Power Draw                  : 25.71 W
+        Power Limit                 : 75.00 W
+        Default Power Limit         : 75.00 W
+        Enforced Power Limit        : 75.00 W
+        Min Power Limit             : 60.00 W
+        Max Power Limit             : 75.00 W
+    Clocks
+        Graphics                    : 208 MHz
+        SM                          : 208 MHz
+        Memory                      : 2999 MHz
+        Video                       : 784 MHz
+    Applications Clocks
+        Graphics                    : 885 MHz
+        Memory                      : 3003 MHz
+    Default Applications Clocks
+        Graphics                    : 885 MHz
+        Memory                      : 3003 MHz
+    Max Clocks
+        Graphics                    : 1531 MHz
+        SM                          : 1531 MHz
+        Memory                      : 3003 MHz
+        Video                       : 1379 MHz
+    Max Customer Boost Clocks
+        Graphics                    : 1113 MHz
+    Clock Policy
+        Auto Boost                  : N/A
+        Auto Boost Default          : N/A
+    Processes
+        Process ID                  : 8201
+            Type                    : C
+            Name                    : ./main
+            Used GPU Memory         : 109 MiB
+
+[sunyeming@server08 video]$ ffmpeg version 3.4.1 Copyright (c) 2000-2017 the FFmpeg developers
+  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-16)
+  configuration: --prefix=/home/sunyeming/build-ffmpeg/ --bindir=/home/sunyeming/bin --enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp --extra-cflags=-I/usr/local/cuda-9.1/include --extra-ldflags=-L/usr/local/cuda-9.1/lib64
+  libavutil      55. 78.100 / 55. 78.100
+  libavcodec     57.107.100 / 57.107.100
+  libavformat    57. 83.100 / 57. 83.100
+  libavdevice    57. 10.100 / 57. 10.100
+  libavfilter     6.107.100 /  6.107.100
+  libswscale      4.  8.100 /  4.  8.100
+  libswresample   2.  9.100 /  2.  9.100
+[h264 @ 0x280f740] Stream #0: not enough frames to estimate rate; consider increasing probesize
+Input #0, h264, from '1080p_h264.h264':
+  Duration: N/A, bitrate: N/A
+    Stream #0:0: Video: h264 (High), yuv420p(progressive), 1920x1080, 30 fps, 30 tbr, 1200k tbn, 60 tbc
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (h264_cuvid) -> rawvideo (native))
+Press [q] to stop, [?] for help
+Output #0, rawvideo, to 'output_1.yuv':
+  Metadata:
+    encoder         : Lavf57.83.100
+    Stream #0:0: Video: rawvideo (NV12 / 0x3231564E), nv12, 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 746496 kb/s, 30 fps, 30 tbn, 30 tbc
+    Metadata:
+      encoder         : Lavc57.107.100 rawvideo
+frame=  450 fps=193 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed= 6.5x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+
+//concurrent test 30 most to 31
+frame=  450 fps=3.0 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed= 0.1x     
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=3.0 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0993x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.7 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0899x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0885x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0882x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0882x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0881x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0875x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0872x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0869x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0869x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0868x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0868x    
+video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
