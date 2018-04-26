@@ -203,91 +203,33 @@ GPU 00000000:84:00.0
             Type                    : C
             Name                    : ./main
             Used GPU Memory         : 109 MiB
+[user@server08 video]$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    2
+Core(s) per socket:    6
+Socket(s):             2
+NUMA node(s):          2
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 62
+Model name:            Intel(R) Xeon(R) CPU E5-2630 v2 @ 2.60GHz
+Stepping:              4
+CPU MHz:               1246.171
+CPU max MHz:           3100.0000
+CPU min MHz:           1200.0000
+BogoMIPS:              5200.32
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              15360K
+NUMA node0 CPU(s):     0-5,12-17
+NUMA node1 CPU(s):     6-11,18-23
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts
 
-[user@server08 video]$ ffmpeg version 3.4.1 Copyright (c) 2000-2017 the FFmpeg developers
-  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-16)
-  configuration: --prefix=/home/sunyeming/build-ffmpeg/ --bindir=/home/sunyeming/bin --enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp --extra-cflags=-I/usr/local/cuda-9.1/include --extra-ldflags=-L/usr/local/cuda-9.1/lib64
-  libavutil      55. 78.100 / 55. 78.100
-  libavcodec     57.107.100 / 57.107.100
-  libavformat    57. 83.100 / 57. 83.100
-  libavdevice    57. 10.100 / 57. 10.100
-  libavfilter     6.107.100 /  6.107.100
-  libswscale      4.  8.100 /  4.  8.100
-  libswresample   2.  9.100 /  2.  9.100
-[h264 @ 0x280f740] Stream #0: not enough frames to estimate rate; consider increasing probesize
-Input #0, h264, from '1080p_h264.h264':
-  Duration: N/A, bitrate: N/A
-    Stream #0:0: Video: h264 (High), yuv420p(progressive), 1920x1080, 30 fps, 30 tbr, 1200k tbn, 60 tbc
-Stream mapping:
-  Stream #0:0 -> #0:0 (h264 (h264_cuvid) -> rawvideo (native))
-Press [q] to stop, [?] for help
-Output #0, rawvideo, to 'output_1.yuv':
-  Metadata:
-    encoder         : Lavf57.83.100
-    Stream #0:0: Video: rawvideo (NV12 / 0x3231564E), nv12, 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 746496 kb/s, 30 fps, 30 tbn, 30 tbc
-    Metadata:
-      encoder         : Lavc57.107.100 rawvideo
-frame=  450 fps=193 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed= 6.5x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-
-//concurrent test 30 most to 31
-frame=  450 fps=3.0 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed= 0.1x     
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=3.0 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0993x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.7 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0899x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0885x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0882x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0882x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0881x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.088x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0877x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0875x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0872x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0871x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.087x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0869x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0869x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0868x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
-frame=  450 fps=2.6 q=-0.0 Lsize= 1366875kB time=00:00:15.13 bitrate=739919.0kbits/s speed=0.0868x    
-video:1366875kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.000000%
+1080p 30fps 16
+2160p 30fps 4
