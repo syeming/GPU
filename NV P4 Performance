@@ -1,8 +1,8 @@
-[sunyeming@server08 video]$ lspci | grep VGA
+[user@server08 video]$ lspci | grep VGA
 0a:00.0 VGA compatible controller: ASPEED Technology, Inc. ASPEED Graphics Family (rev 21)
-[sunyeming@server08 video]$ lspci | grep -i nvidia
+[user@server08 video]$ lspci | grep -i nvidia
 84:00.0 3D controller: NVIDIA Corporation GP104GL [Tesla P4] (rev a1)
-[sunyeming@server08 video]$ lspci -v -s 84:00.0
+[user@server08 video]$ lspci -v -s 84:00.0
 84:00.0 3D controller: NVIDIA Corporation GP104GL [Tesla P4] (rev a1)
 	Subsystem: NVIDIA Corporation Device 11d8
 	Flags: bus master, fast devsel, latency 0, IRQ 68, NUMA node 1
@@ -13,7 +13,7 @@
 	Kernel driver in use: nvidia
 	Kernel modules: nouveau, nvidia_drm, nvidia
 
-[sunyeming@server08 video]$ nvidia-smi 
+[user@server08 video]$ nvidia-smi 
 Thu Apr 26 15:08:39 2018       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 387.26                 Driver Version: 387.26                    |
@@ -31,7 +31,7 @@ Thu Apr 26 15:08:39 2018
 |=============================================================================|
 |    0      8201      C   ./main                                       109MiB |
 +-----------------------------------------------------------------------------+
-[sunyeming@server08 video]$ nvidia-smi -a
+[user@server08 video]$ nvidia-smi -a
 
 ==============NVSMI LOG==============
 
@@ -204,7 +204,7 @@ GPU 00000000:84:00.0
             Name                    : ./main
             Used GPU Memory         : 109 MiB
 
-[sunyeming@server08 video]$ ffmpeg version 3.4.1 Copyright (c) 2000-2017 the FFmpeg developers
+[user@server08 video]$ ffmpeg version 3.4.1 Copyright (c) 2000-2017 the FFmpeg developers
   built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-16)
   configuration: --prefix=/home/sunyeming/build-ffmpeg/ --bindir=/home/sunyeming/bin --enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp --extra-cflags=-I/usr/local/cuda-9.1/include --extra-ldflags=-L/usr/local/cuda-9.1/lib64
   libavutil      55. 78.100 / 55. 78.100
