@@ -1,4 +1,4 @@
-./configure --prefix=/home/sunyeming/build-ffmpeg/ --bindir=/home/sunyeming/bin\
+./configure --prefix=/home/user/build-ffmpeg/ --bindir=/home/user/bin\
 --enable-cuda --enable-cuvid --enable-nvenc --enable-nonfree --enable-libnpp\
 --extra-cflags=-I/usr/local/cuda-9.1/include --extra-ldflags=-L/usr/local/cuda-9.1/lib64
 
